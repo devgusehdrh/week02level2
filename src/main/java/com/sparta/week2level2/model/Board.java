@@ -28,7 +28,7 @@ public class Board extends Timestamp{
     @Column(name = "likecount")
     private Long likeCount;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user_id;
 

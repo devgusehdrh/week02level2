@@ -1,7 +1,6 @@
 package com.sparta.week2level2.service;
 
 import com.sparta.week2level2.config.auth.PrincipalDetails;
-import com.sparta.week2level2.dto.FileRequestDto;
 import com.sparta.week2level2.model.Board;
 import com.sparta.week2level2.model.User;
 import com.sparta.week2level2.repository.BoardRepository;
@@ -40,10 +39,9 @@ public class FileService {
 
 
     // 이미지 파일 업로드 및 컨텐츠 내용 저장
-    public Long uploadFile(FileRequestDto requestDto, PrincipalDetails principalDetails) throws IOException {
+    public Long uploadFile(MultipartFile picture, String content, PrincipalDetails principalDetails) throws IOException {
         // 이미지 파일 처리
         Files file = new Files();
-        MultipartFile picture = requestDto.getPicture();
         String originFileName = picture.getOriginalFilename();
 
         String originFileNameExtension = FilenameUtils.getExtension(originFileName).toLowerCase();
@@ -55,8 +53,6 @@ public class FileService {
 
         String filePath = "/home/ubuntu/sparta/image/";
 //        String filePath = "C:\\sparta\\image\\";
-
-
 
         do{
             storedFileName = RandomStringUtils.randomAlphanumeric(32) + "." + originFileNameExtension;
@@ -72,7 +68,6 @@ public class FileService {
         save(file);
 
         // 컨텐츠 내용 저장
-        String content = requestDto.getContent();
         String username = principalDetails.getUsername();
 
         User user = userRepository.findByUsername(username);

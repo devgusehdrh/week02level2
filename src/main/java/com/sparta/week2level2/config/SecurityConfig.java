@@ -14,7 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.cors.CorsUtils;
 
 
 @Configuration
@@ -46,10 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-
-                    .addFilter(corsConfig.corsFilter()) // cors 필터 정책 추가
+//                    .addFilter(corsConfig.corsFilter()) // cors 필터 정책 추가
                     .csrf().disable()
-//                    .cors().configurationSource(corsConfig.corsConfigurationSource()).and()
+                    .cors().configurationSource(corsConfig.corsConfigurationSource()).and()
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션 방식 미사용
 
                 .and()

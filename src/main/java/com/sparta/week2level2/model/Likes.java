@@ -13,31 +13,31 @@ import javax.persistence.*;
 // 참고자료: https://lktgt.tistory.com/47
 @Entity(name="likes")
 @NoArgsConstructor
-public class Like {
+public class Likes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "like_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
-    private Board post_id;
+    private Board postid;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user_id;
+    private User userid;
 
-    public Like(LikeRequestDto requestDto){
-        this.post_id = requestDto.getPost_id();
-        this.user_id = requestDto.getUser_id();
+    public Likes(LikeRequestDto requestDto){
+        this.postid = requestDto.getPost_id();
+        this.userid = requestDto.getUser_id();
     }
 
 
-//    public Like(Long post_id, Long id) {
-//
-//        board.getId() = post_id;
-//        this.user_id = id;
-//    }
+    public Likes(Board post_id, User user_id) {
+
+        this.postid = post_id;
+        this.userid = user_id;
+    }
 }
