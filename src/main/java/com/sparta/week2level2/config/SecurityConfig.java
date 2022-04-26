@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
 //                    .addFilter(corsConfig.corsFilter()) // cors 필터 정책 추가
                     .csrf().disable()
-                    .cors().configurationSource(corsConfig.corsConfigurationSource()).and()
+                    .cors().configurationSource(CorsConfig.corsConfigurationSource()).and()
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 세션 방식 미사용
 
                 .and()

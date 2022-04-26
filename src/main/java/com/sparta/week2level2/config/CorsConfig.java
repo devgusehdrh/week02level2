@@ -29,7 +29,7 @@ public class CorsConfig {
 //        return new CorsFilter(source);
 //    }
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+    public static CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 //        config.setAllowCredentials(true); // 내서버가 응답할 때 json을 자바스크립트에서 처리할 수 있게할지 설정
         // setAllowCredentials(true) 와 addAllowedOrigin("*") 를 함께 사용하지 못하게
@@ -37,6 +37,7 @@ public class CorsConfig {
         config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
+        config.addExposedHeader("Authorization");
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

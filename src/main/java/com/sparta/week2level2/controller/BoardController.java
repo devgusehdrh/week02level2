@@ -60,6 +60,7 @@ public class BoardController {
     }
 
     //게시글 추가
+    @ResponseBody
     @PostMapping(value = "posts",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Long writePost(
             @RequestPart MultipartFile picture,
