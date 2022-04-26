@@ -51,8 +51,8 @@ public class FileService {
         File storedFile;
         String storedFileName;
 
-        String filePath = "/home/ubuntu/sparta/image/";
-//        String filePath = "C:\\sparta\\image\\";
+//        String filePath = "/home/ubuntu/sparta/image/";
+        String filePath = "C:\\sparta\\image\\";
 
         do{
             storedFileName = RandomStringUtils.randomAlphanumeric(32) + "." + originFileNameExtension;
